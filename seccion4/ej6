@@ -1,0 +1,12 @@
+#!/bin/bash
+
+lado=4
+
+for ((i=1; i<=lado; i++))
+do
+    for ((j=1; j<=lado; j++))
+    do
+        echo -n "* "
+    done
+    echo
+done

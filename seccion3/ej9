@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p "Ingrese un numero del 1 al 5: " numero
+
+case $numero in 
+   [1-5]) 
+     echo $numero;;
+   *)
+     echo "Del un al cinco"
+esac  
+    

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+grep -oE '\w+' archivo.txt | sort | uniq -c | sort -nr | head -5
+
+
+cat archivo.txt | tr -s '[:space:]' '\n'| grep -v '^$' | sort | uniq -c | sort -rn | head -n 5

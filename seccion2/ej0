@@ -1,0 +1,6 @@
+#!/bin/bash
+read -p "Ingrese un numero: " num
+
+[[ $((num%2)) -eq 0 ]] && echo "Es par"
+[[ ! $((num%2)) -eq 0 ]] && echo "Es impar"
+

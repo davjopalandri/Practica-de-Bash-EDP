@@ -1,0 +1,19 @@
+#!/bin/bash
+b=""
+for i in dir/*; do
+    a=$(stat -c %s $i )
+    echo $a
+done 
+
+#largest_file=$(du -a dir/* | sort -n -r | head -n 1 | cut -f 2)
+#echo $largest_file
+
+max_size=0
+for file in dir/*; do
+    size=$(stat -c %s $file)
+    if (( size > max_size )); then
+        max_size=$size
+    fi
+done
+
+echo "El tamaño del archivo más grande es: $max_size bytes"

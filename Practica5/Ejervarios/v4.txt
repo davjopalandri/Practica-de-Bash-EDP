@@ -1,0 +1,73 @@
+#!/bin/bash -e
+
+clear
+[[ $# != 1 ]] && echo "es necesario un argumento" && exit 1
+P=$1  # path to file or directory
+[[ ! -e $P ]] && echo "$P no existe" && exit 2
+[[ $(ls -l -d $P | cut -d" " -f3) != $USER ]] && echo "Usted ($USER) no es dueño de $P" && exit 3
+
+R=""  # recursive assign is false by default
+if [[ -d $P ]]
+then
+	read -p "$P es un directorio, desea aplicar los cambios de forma recursiva? (y/n): " R_CHOICE
+	[[ "$R_CHOICE" == "y" ]] && R=" -R"
+	echo " "
+fi
+
+
+PS3="Opcion > "
+echo "Elija a quienes se aplicaran los cambios (permisos actuales: $(ls -l -d $P | cut -d" " -f1))"
+select TARGET_USER in "Dueño" "Grupo" "Otros" "Salir"
+do
+	[[ -e $TARGET_USER ]] && echo "Seleccione opcion valida" && continue
+	[[ $REPLY == 4 ]] && clear && break
+	
+	case $REPLY in
+		1) USER_FLAG="u";;
+		2) USER_FLAG="g";;
+		3) USER_FLAG="o";;
+	esac
+	echo "(Selecciono: $TARGET_USER)"
+
+	echo " "
+	echo "Seleccione accion"
+	select ADD_REM in "Otorgar permiso" "Quitar permiso"
+	do
+		[[ -e $ADD_REM ]] && echo "Seleccione opcion valida" && continue
+		case $REPLY in
+			1)AR_FLAG="+";;
+			2)AR_FLAG="-";;
+		esac
+		echo "(Selecciono: $ADD_REM)"
+
+		echo " "
+		echo "Seleccione tipo de permiso"
+		select RWX in "Permiso de lectura" "Permiso de escritura" "Permiso de ejecucion"
+       		do
+                	[[ -e $RWX ]] && echo "Seleccione opcion valida" && continue
+	                case $REPLY in
+	                        1)RWX_FLAG="r";;
+        	                2)RWX_FLAG="w";;
+				3)RWX_FLAG="x";;
+                	esac
+			echo "(Selecciono: $RWX)"
+
+			CMD="chmod$R $USER_FLAG$AR_FLAG$RWX_FLAG $P"
+        		echo "$ $CMD"
+			$($CMD)
+			sleep 5
+			break
+        	done
+		break
+	done
+
+	clear
+	echo "Elija a quienes se aplicaran los cambios (permisos actuales: $(ls -l -d $P | cut -d" " -f1))"
+	echo "1) Dueño"
+	echo "2) Grupo"
+	echo "3) Otros"
+	echo "4) Salir"
+
+done
+
+exit 0

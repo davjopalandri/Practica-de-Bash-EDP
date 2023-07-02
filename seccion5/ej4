@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Cree una función que tome un número entero como argumento y verifique si es par o impar.
+
+function parImpar() {
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        if [[ $(($1%2)) -eq 0 ]]; then
+            echo "Es par"
+        else 
+            echo "Impar"
+        fi
+    else    
+        echo "No es un numero entero"
+    fi
+}
+
+parImpar $1

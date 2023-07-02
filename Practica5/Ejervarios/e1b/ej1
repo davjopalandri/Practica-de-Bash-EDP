@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Leer el nombre del archivo de texto
+read -p "Ingrese el nombre del archivo: " F
+
+# Verificar si el archivo existe
+if [ ! -f "$F" ]; then
+    echo "El archivo no existe."
+    exit 1
+fi
+
+# Contar el número de líneas en el archivo
+num_lineas=$(wc -l < "$F")
+
+# Iterar sobre las líneas del archivo en orden inverso
+for (( i=num_lineas; i>=1; i-- )); do
+    linea=$(sed -n "${i}p" "$archivo")  # Extraer la línea específica
+    echo "$linea"  # Imprimir la línea
+done

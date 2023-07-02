@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir=$1
+[[ ! -e $dir ]] && echo "El archivo no existe" && exit 1
+[[ ! -d $dir ]] && echo "Debe ser un directorio" && exit 2
+[[ ! -r $dir ]] && echo "Debe tener permisos de escritura" && exit 3
+
+cantidad_archivos_regulares=$(find "$dir" -type f | wc -l)
+cantidad_directorios=$(find "$dir" -type d | wc -l)
+cantidad_lineas_archivos_texto=$(find "$dir" -type f -exec cat {} \; | wc -l)
+
+echo "Cantidad de archivos regulares: $cantidad_archivos_regulares"
+echo "Cantidad de directorios: $cantidad_directorios"
+echo "Cantidad de líneas de los archivos de texto: $cantidad_lineas_archivos_texto"
+
+hernangonzalez.234@gmail.com

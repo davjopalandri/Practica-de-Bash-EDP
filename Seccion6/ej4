@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sed -i 's/Es/HHHHH/g' directorio/archivo1.txt directorio/archivo2.txt

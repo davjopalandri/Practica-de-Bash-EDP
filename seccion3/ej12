@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p " Ingrese una oracion: " oracion
+
+echo $oracion
+
+if [[ $oracion =~ [.!?]$ ]] ; then
+   echo "termina bien"
+fi 
+	 
+

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+function f {
+    X=$1
+    Y=$2
+
+    if [ -d $X ]; then
+        for i in $(seq $Y)
+        do
+            F=$X/f$i
+            touch $F
+            echo "Data $i" > $F
+        done
+    else
+    echo "Impossible!"
+    exit 1
+    fi
+}
+
+function g {
+    [ $# -ne 2 ] && echo "Argumentos invalidos" && exit 1
+    #argumento1 debe ser un directorio valido
+    [ ! -d $1 ] && echo "Debe ser directorio válido" && exit 1
+    #argumento2 debe ser un entero positivo
+    [ ! $1 -gt 0 ] echo "El primer arggumento debe ser un entero positivo" && exit 1
+    #debe generar un archivo llamado /tmp/(valor argumento2).data
+    #con el contenido de todos los archivos dentro de argumento1, argumento2 veces
+    #(simplificacion: en argumento1 solo habran archivos de texto)
+    mkdir tmp
+    touch tmp/$2.data
+    for i in $1/*; do
+        for j in $(seq $2); do
+            echo $(cat $i) >> tmp/$2.data
+        done
+    done
+
+    echo $(cat tmp/$2.data)
+}
+
+A=$1
+B=$2
+
+[ $# -lt 2 ] && echo "No!!!" && exit 1
+
+f $A $B
+g $A $B
+
+exit 0

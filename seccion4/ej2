@@ -1,0 +1,14 @@
+#!/bin/bash
+
+read -p "Ingrese un numero: " n
+suma=0
+for i in $(seq 1 $n); do
+    suma=$(($i + $suma))
+done
+echo $suma
+
+sum=0
+for ((j=0; j<=$n; j++)); do
+    sum=$(($j + $sum))
+done
+echo $sum

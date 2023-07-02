@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function listar() {
+    dir=$1
+    [ ! -d $dir ] && echo "No es un directorio" && exit 1
+    for file in $dir/*; do
+        if [[ -f $file ]]; then
+            echo $file
+        fi
+    done
+}
+
+listar $1

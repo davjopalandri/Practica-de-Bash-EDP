@@ -1,0 +1,6 @@
+#!/bin/bash
+
+egrep -o "^[0-9]+$" archivo.txt | tr '\n' '+' | sed 's/+$/\n/' | 
+
+
+grep -Eo '[0-9]+' archivo.txt | awk '{ sum += $0 } END { print "The sum of the numbers in archivo.txt is:", sum }'

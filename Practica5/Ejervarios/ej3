@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#El script deberá generar un nuevo archivo credenciales.txt que contendrá registros de la
+#forma usuario:clave, donde usuario proviene del archivo usuarios.txt y clave del archivo claves.txt.
+
+usuarios=usuario.txt
+claves=claves.txt
+
+if [[ ! -f $usuarios ]] || [[ ! -f $claves ]]; then
+    echo "No se encontraron los archivos"
+    exit 1
+fi
+
+# Leer los archivos línea por línea y generar el archivo de credenciales
+while IFS= read -r usuario && IFS= read -r clave <&3; do
+  echo "$usuario:$clave" >> credenciales
+done < $usuarios 3< $claves
+
+echo "Se ha generado el archivo de credenciales: credenciales"
+
+cat credenciales
+

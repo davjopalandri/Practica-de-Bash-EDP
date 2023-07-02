@@ -1,0 +1,17 @@
+#!/bin/bash
+#  Crear un script que reciba un directorio como entrada y determine cuántos archivos
+# dentro del mismo poseen extensiones .sh o .txt y si comienzan su nombre con dos letras minúsculas.
+
+DIR=$1
+
+if [ ! -d "$DIR" ]; then
+  echo "Ingrese un directorio"
+  exit 1
+fi
+
+# Contar archivos con extensiones .sh y .txt que comienzan con dos letras minúsculas
+cantidad_archivos_sh=$(find $DIR -type f -name "*.sh" | egrep -c "/[a-z]{2}[^/]*\.sh$")
+cantidad_archivos_txt=$(find $DIR -type f -name "*.txt" | egrep -c "/[a-z]{2}[^/]*\.txt$")
+
+echo "Cantidad de archivos con extensión .sh: $cantidad_archivos_sh"
+echo "Cantidad de archivos con extensión .txt: $cantidad_archivos_txt"

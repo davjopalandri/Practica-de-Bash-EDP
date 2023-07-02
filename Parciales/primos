@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for I in $(seq 2 $(($1 - 1))); do
+    if test $(($1 % $I)) -eq 0; then
+    echo "No es primo"
+    exit 0
+    fi
+done
+echo "Es primo"

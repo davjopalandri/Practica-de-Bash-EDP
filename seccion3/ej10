@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "Ingrese una letra: " letra
+
+if [[ $letra =~ ^[aeiou]$ ]]
+then 
+   echo "Es vocal"
+elif [[ $letra =~ ^[qwrtypsdfghjklzxcvbnm] ]] 
+then
+    echo "Es consonante"
+else
+   echo "No es una letra valida"
+fi

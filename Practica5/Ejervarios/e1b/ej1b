@@ -1,0 +1,20 @@
+#!/bin/bash
+
+read -p "Ingrese el nombre del archivo " archivo
+
+# Verificar si el archivo existe
+if [ ! -f "$archivo" ]; then
+    echo "El archivo no existe."
+    exit 1
+fi
+
+# Leer el contenido del archivo en un arreglo
+mapfile -t lineas < "$archivo"
+
+# Obtener la longitud del arreglo
+longitud=${#lineas[@]}
+
+# Iterar sobre el arreglo en orden inverso e imprimir las líneas
+for (( i=longitud-1; i>=0; i-- )); do
+    echo "${lineas[i]}"
+done

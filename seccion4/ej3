@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Diseña un script que cuente y muestre la cantidad de archivos que hay en un directorio específico. 
+#Pasar por parametro el directorio a evaluar y verificar que sea un directorio.
+
+dir=$1
+cont=0
+
+[ ! -d $dir ] && echo "El directorio no existe" && exit 1
+
+for file in "$dir"/*; do
+  if [ -f "$file" ]; then
+    ((cont++))
+    echo $file
+  fi
+done
+echo $cont

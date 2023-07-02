@@ -1,0 +1,15 @@
+#!/bin/bash
+base=4
+
+for ((i=1; i<=base; i++)); do
+    if [[ $i -eq 1 ]]; then
+        echo "    *"
+    elif [[ $i -eq 2 ]]; then
+        echo "   * *"
+    elif [[ $i -eq 3 ]]; then
+        echo "  * * *"
+    elif [[ $i -eq 4 ]]; then
+        echo " * * * *"
+    fi
+done
+echo

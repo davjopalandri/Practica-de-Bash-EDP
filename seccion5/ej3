@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Cree una función que tome un nombre de archivo como argumento y cuente el número de líneas en el archivo.
+
+function cuentaLineas() {
+VAR=$1
+if [[ ! -e $VAR ]]; then
+    echo "No existe tal archivo"
+    exit 1
+fi
+
+num_lineas=$(wc -l < $VAR)
+
+    # Mostrar el resultado
+    echo "El archivo $VAR tiene $num_lineas líneas."
+    exit 0
+}
+
+cuentaLineas $1

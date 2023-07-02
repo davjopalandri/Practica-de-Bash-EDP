@@ -1,0 +1,15 @@
+#!/bin/bash
+
+P=$1
+n=$2
+ruta=$3
+
+[ ! $# -eq 3 ] && echo "Tienen que ser tres argumentos" && exit 1
+[[ ! $n =~ ^[0-9]+$ ]] && echo "El segundo argumento debe ser un numero positivo" && exit 2
+[ ! -w $ruta ] && echo "No se tienen permisos de escritura en el archivo de ruta" && exit 3
+
+contenido="Se ingresó la palabra $P"
+
+for i in $(seq 1 $n); do
+    echo "$contenido" >> $ruta/palabra_$P.dat
+done

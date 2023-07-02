@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#Crea un script que solicite al usuario ingresar un número y calcule su factorial (el producto de todos los números enteros positivos desde 1 hasta el número ingresado). No salir del script hasta que se introduzca la x o X.
+
+while :; do
+    read -p "Ingresar un numero, (x para terminar): " num
+    if [[ $num =~ [Xx] ]]; then 
+        break
+    elif [[ $num =~ [0-9]+ ]]; then
+        factorial=1
+        for ((i=1; i<=$num; i++)); do
+            factorial=$(( $i*$factorial ))
+        done
+        echo $factorial
+    else
+        echo "No ha ingresado un numero"
+    fi
+done

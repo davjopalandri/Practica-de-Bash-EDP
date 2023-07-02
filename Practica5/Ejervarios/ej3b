@@ -1,0 +1,27 @@
+#!/bin/bash
+
+credenciales=credenciales.txt
+
+read -p "Ingrese nombre de usuario: " usuario
+read -s -p "Clave: " clave
+echo
+
+credencial_encontrada=false
+
+while IFS=":" read -r usuario_registrado clave_registrada; do
+   if [[ "$usuario" = "$usuario_registrado" && "$clave" = "$clave_registrada" ]]; then
+    credencial_encontrada=true
+    break
+  fi
+  echo "Comparo $usuario y $usuario_registrado"
+  echo "Comparo $clave y $clave_registrada"
+done < $credenciales
+
+if [[ $credencial_encontrada = true ]]; then
+  echo "¡Inicio de sesión exitoso!"
+else
+  echo "Usuario no registrado o clave incorrecta."
+fi
+
+
+

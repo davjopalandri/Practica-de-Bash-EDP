@@ -1,0 +1,18 @@
+#!/bin/bash
+
+fibo(){
+a=0
+echo 0
+b=1
+echo 1
+for ((i=1; i<=$1; i++)); do
+    next=$(($a +$b))
+    echo $next
+    a=$b
+    b=$next
+done
+}
+
+read -p "Ingrese cantidad de series de Fibonacci: " n
+result=$(fibo $n)
+echo $result

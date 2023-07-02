@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dia=$1
+mes=$2
+anio=$3
+
+if [ $dia -gt 0 ] && [ $dia -le 31 ] && [ $mes -gt 0 ] && [ $mes -le 12 ] && [ $anio -gt 0 ]; then
+    if date -d "$anio-$mes-$dia"; then
+    echo "La fecha $dia/$mes/$anio es válida."
+  else
+    echo "La fecha $dia/$mes/$anio es inválida."
+  fi
+else
+  echo "La fecha $dia/$mes/$anio es inválidaaaaa."
+fi

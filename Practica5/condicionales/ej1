@@ -1,0 +1,10 @@
+#!/bin/bash
+
+var=$1
+
+[ -e $var ] && echo "Existe"
+if [[ -f $var ]]; then
+    echo "Es archivo regular"
+elif [[ -d $var ]]; then
+    echo "Es un directorio"
+fi

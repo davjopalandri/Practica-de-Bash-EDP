@@ -1,0 +1,12 @@
+#!/bin/bash
+
+[ $# -ne 1 ] && exit 1
+[ -d $1 ] && exit 2
+if [ -f $1 ]; then
+    echo "" >> $1
+    head -n -1 $1 > tmp
+    mv tmp $1
+else
+    echo -n "" > $1
+fi
+exit 0

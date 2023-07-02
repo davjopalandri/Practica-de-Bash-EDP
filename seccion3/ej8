@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat $1 | egrep @["hotmail.com|gmail.com|yahoo.com"]
+
+grep -E "@hotmail.com$" numeros

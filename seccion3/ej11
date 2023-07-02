@@ -1,0 +1,19 @@
+#!/bin/bash
+
+read -p "Ingrese una password valida: " pass
+
+if [[ ${#pass} -le 8 ]]; then
+   echo "No es una contrasena valida"
+else
+   if [[ ! $pass =~ [A-Z]+ ]]; then
+      echo "Tiene que tener al menos una mayuscula"
+   else
+       if [[ ! $pass =~ [0-9]+ ]]; then
+	   echo "Tiene que tener al menos un numero"
+       else
+	       echo "Contra valiad ;-)"    
+       fi	   
+   fi
+	   
+fi
+

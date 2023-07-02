@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat archivo.csv | tr ',' '\t'
+
+

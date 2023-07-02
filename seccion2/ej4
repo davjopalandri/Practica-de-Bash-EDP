@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ARCH=$1
+
+[[ ! -e $ARCH ]] && echo "No existe el archivo" && exit 1
+
+if [[ -f $ARCH ]]; then
+    echo $(ls -l $ARCH | cut -d" " -f1)
+fi

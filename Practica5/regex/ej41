@@ -1,0 +1,30 @@
+#!/bin/bash
+
+cadena=$1
+
+# Expresión regular para validar una dirección IP
+ES_IP='^([0-9]{1,3}\.){3}[0-9]{1,3}$'
+
+# Validar si la cadena ingresada coincide con la expresión regular
+if [[ $cadena =~ $ES_IP ]]; then
+  # Separar los componentes de la dirección IP
+  IFS='.' read -r -a componentes <<< "$cadena"
+  
+  # Validar cada componente de la dirección IP
+  ip_valida=true
+  for componente in "${componentes[@]}"; do
+    # Verificar si el componente está dentro del rango válido (0-255)
+    if (( componente < 0 || componente > 255 )); then
+      ip_valida=false
+      break
+    fi
+  done
+  
+  if $ip_valida; then
+    echo "La cadena ingresada es una dirección IP válida."
+  else
+    echo "La cadena ingresada no es una dirección IP válida."
+  fi
+else
+  echo "La cadena ingresada no tiene el formato de una dirección IP válida."
+fi

@@ -1,0 +1,12 @@
+#!/bin/bash
+# Crear un script que indique cuántos archivos regulares con el nombre (exacto)
+#README existen en el directorio /usr/share/doc.
+DIR=$1
+
+if [ ! -d "$DIR" ]; then
+  echo "El directorio $DIR no existe."
+  exit 1
+fi
+
+find $DIR -type f -name README | wc -l
+

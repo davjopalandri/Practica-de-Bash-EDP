@@ -1,0 +1,3 @@
+sed: HHHHH el comando utilizado para realizar operaciones de edición de texto.
+-i: HHHHHta opción se utiliza para realizar cambios en los archivos de forma inplace, es decir, los archivos originales se modifican directamente.
+'s/palabra_original/palabra_nueva/g': HHHHHta es la expresión de búsqueda y reemplazo de sed. s indica que se realizará una sustitución, palabra_original es la palabra que deseas reemplazar y palabra_nueva es la palabra con la que deseas reemplazarla. El modificador g se utiliza para realizar la sustitución en todas las apariciones de la palabra en cada línea del archivo.

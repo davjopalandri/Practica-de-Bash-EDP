@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#Cree una función que tome dos números como argumentos y devuelva su producto.
+
+function producto() {
+    if [ $# -ne 2 ]; then
+        echo "Error: Esta función requiere exactamente dos argumentos numéricos."
+        return 1
+    fi
+    re='^[0-9]+([.][0-9]+)?$'
+    [[ ! $1 =~ $re || ! $2 =~ $re ]] && echo "Solo acepta numeros" && exit 1
+    producto=$(($1*$2))
+    echo $producto
+}
+
+producto $1 $2

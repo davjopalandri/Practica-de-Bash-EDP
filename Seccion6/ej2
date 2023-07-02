@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -d directorio/ ] && echo existe
+find directorio -type f -mtime -7

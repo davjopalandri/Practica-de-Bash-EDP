@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#Crear un script que reciba dos rutas a archivos de texto y que indique si estos archivos
+#tienen la misma cantidad de líneas. Validar que los archivos existen y se pueden leer.
+
+ARCH1=$1
+ARCH2=$2
+
+[ ! -f $ARCH1 ] && echo "Arch1 no es un archivo de texto"
+[ ! -f $ARCH2 ] && echo "Arch2 no es un archivo de texto"
+
+CONT=$(wc -l < $ARCH1)
+echo "El archivo 1 tiene, $CONT lineas"
+
+CONT2=$(wc -l < $ARCH2)
+echo "El archivo 2 tiene, $CONT2 lineas"

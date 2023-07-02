@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function suma() {
+re="^[0-9]+$"
+   
+if [[ $# -lt 2 ]]; then
+    echo "Faltan argumentos"
+    exit 1
+elif ! [[ $1 =~ $re ]] || ! [[ $2 =~ $re ]]; then
+    echo "Error: Los argumentos deben ser números enteros."
+    exit 2
+else
+    suma=$(($1+$2))
+    echo $suma
+fi
+}
+
+suma $1 $2
+
+
+

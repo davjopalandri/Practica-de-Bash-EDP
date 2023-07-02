@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ $(($#%2)) -eq 0 ] && echo "El numero de argumentos ingresados es par"
+[ ! $(($#%2)) -eq 0 ] && echo "El numero de argumentos ingresados es impar"

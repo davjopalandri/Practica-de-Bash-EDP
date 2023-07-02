@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Función para validar si el archivo o directorio existe y se tienen los derechos suficientes
+validar_existencia_y_derechos() {
+    archivo="$1"
+
+    if [[ ! -e "$archivo" ]]; then
+        echo "El archivo o directorio '$archivo' no existe."
+        exit 1
+    fi
+
+    if [[ ! -w "$archivo" ]]; then
+        echo "No tienes permisos suficientes para modificar los permisos de '$archivo'."
+        exit 1
+    fi
+}
+
+# Función para aplicar los cambios de permisos
+aplicar_cambios() {
+    archivo="$1"
+    permisos="$2"
+
+    chmod "$permisos" "$archivo"
+    echo "Los permisos del archivo '$archivo' se han actualizado a: $permisos"
+}
+
+# Función principal
+main() {
+    # Leer el archivo o directorio
+    read -p "Ingrese el archivo o directorio: " archivo
+    validar_existencia_y_derechos "$archivo"
+
+    # Leer los permisos a aplicar
+    read -p "Ingrese los permisos (en formato numérico o simbólico): " permisos
+
+    # Opción para aplicar cambios recursivamente si se trata de un directorio
+    if [[ -d "$archivo" ]]; then
+        read -p "¿Desea aplicar los cambios recursivamente? (s/n): " opcion_recursiva
+
+        if [[ "$opcion_recursiva" == "s" ]]; then
+            aplicar_cambios "$archivo" "-R $permisos"
+        else
+            aplicar_cambios "$archivo" "$permisos"
+        fi
+    else
+        aplicar_cambios "$archivo" "$permisos"
+    fi
+}
+
+# Ejecutar la función principal
+main

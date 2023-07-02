@@ -1,0 +1,14 @@
+#!/bin/bash
+
+touch arg
+
+if [ $# -eq 0 ]; then
+  echo "No se han proporcionado argumentos."
+else
+  echo "Se han proporcionado $# argumentos:"
+   for arg in "$@"; do
+    echo "- $arg" >> arg
+  done
+fi
+
+cat arg

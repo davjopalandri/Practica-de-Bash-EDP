@@ -1,0 +1,32 @@
+#!/bin/bash
+
+month=$1
+
+case $month in
+  "january")
+    echo "El mes $month tiene 31 días." ;;
+  "february")
+    echo "El mes $month tiene 28 o 29 días." ;;
+  "march")
+    echo "El mes $month tiene 31 días." ;;
+  "april")
+    echo "El mes $month tiene 30 días." ;;
+  "may")
+    echo "El mes $month tiene 31 días." ;;
+  "june")
+    echo "El mes $month tiene 30 días." ;;
+  "july")
+    echo "El mes $month tiene 31 días." ;;
+  "august")
+    echo "El mes $month tiene 31 días." ;;
+  "september")
+    echo "El mes $month tiene 30 días." ;;
+  "october")
+    echo "El mes $month tiene 31 días." ;;
+  "november")
+    echo "El mes $month tiene 30 días." ;;
+  "december")
+    echo "El mes $month tiene 31 días." ;;
+  *)
+    echo "El mes $month no es válido." ;;
+esac
